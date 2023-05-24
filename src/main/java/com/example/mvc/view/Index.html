@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title th:text="${title}">Index</title>
+</head>
+<body>
+<h1>Index</h1>
+<p>
+    <a th:href="@{/Movies/Create}">Create New</a>
+</p>
+<form th:action="@{/Movies/Index}" method="get">
+    <p>
+        <select th:field="${movieGenre}">
+            <option value="">All</option>
+            <option th:each="genre : ${genres}" th:value="${genre}" th:text="${genre}"></option>
+        </select>
+        Title: <input type="text" th:field="${searchString}"/>
+        <input type="submit" value="Filter"/>
+    </p>
+</form>`
+<table class="table">
+    <thead>
+    <tr>
+        <th>Title</th>
+        <th>Release Date</th>
+        <th>Genre</th>
+        <th>Price</th>
+        <th>Rating</th>
+        <th></th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="item : ${Movies}">
+        <td th:text="${item.title}"></td>
+        <td th:text="${item.releaseDate}"></td>
+        <td th:text="${item.genre}"></td>
+        <td th:text="${item.price}"></td>
+        <td th:text="${item.rating}"></td>
+        <td>
+            <a th:href="@{'/Movies/Edit/' + ${item.id}}">Edit</a> |
+            <a th:href="@{'/Movies/Details/' + ${item.id}}">Details</a> |
+            <a th:href="@{'/Movies/Delete/' + ${item.id}}" onclick="return confirm('Are you sure?')">Delete</a>
+        </td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>
