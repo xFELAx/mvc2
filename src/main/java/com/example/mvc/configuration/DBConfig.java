@@ -11,7 +11,6 @@ import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import javax.sql.DataSource;
 
 @Configuration
-@EnableJpaRepositories("com.example.mvc.repository")
 public class DBConfig {
     @Autowired
     Environment env;

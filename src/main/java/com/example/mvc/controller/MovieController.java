@@ -1,13 +1,8 @@
 package com.example.mvc.controller;
 
-import java.util.List;
-
 import com.example.mvc.model.dto.MovieDTO;
-import com.example.mvc.repository.MovieRepository;
-import com.example.mvc.model.entity.Movie;
 import com.example.mvc.service.MovieService;
 import lombok.AllArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;

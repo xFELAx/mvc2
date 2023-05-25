@@ -24,10 +24,10 @@ public class SeedData implements CommandLineRunner {
         }
         movieRepository.saveAll(
                 List.of(
-                        new Movie("When Harry Met Sally", LocalDate.parse("1989-2-12"), "Romantic Comedy", "R", BigDecimal.valueOf(7.99)),
-                        new Movie("Ghostbusters", LocalDate.parse("1984-3-13"), "Comedy", "PG", BigDecimal.valueOf(8.99)),
-                        new Movie("Ghostbusters 2", LocalDate.parse("1986-2-23"), "Comedy", "PG", BigDecimal.valueOf(9.99)),
-                        new Movie("Rio Bravo", LocalDate.parse("1959-4-15"), "Western", "NR", BigDecimal.valueOf(3.99))
+                        new Movie(1, "When Harry Met Sally", LocalDate.parse("1989-2-12"), BigDecimal.valueOf(7.99),"Romantic Comedy", "R"),
+                        new Movie(2, "Ghostbusters", LocalDate.parse("1984-3-13"),BigDecimal.valueOf(8.99), "Comedy", "PG"),
+                        new Movie(3, "Ghostbusters 2", LocalDate.parse("1986-2-23"),BigDecimal.valueOf(9.99), "Comedy", "PG"),
+                        new Movie(4, "Rio Bravo", LocalDate.parse("1959-4-15"), BigDecimal.valueOf(3.99),"Western", "NR")
                 )
         );
     }

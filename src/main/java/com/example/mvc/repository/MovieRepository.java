@@ -5,13 +5,12 @@ import java.util.Optional;
 
 import com.example.mvc.model.entity.Movie;
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.stereotype.Repository;
 
 @Repository
 public interface MovieRepository extends JpaRepository<Movie, Integer> {
 
-    List<String> findDistinctGenres();
+    List<String> findDistinctByGenre();
 
     List<Movie> findByTitleContaining(String searchString);
 

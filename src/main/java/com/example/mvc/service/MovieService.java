@@ -15,7 +15,7 @@ import java.util.List;
 public class MovieService {
     private final MovieRepository movieRepository;
     public List<String> getGenres() {
-        return  movieRepository.findDistinctGenres();
+        return  movieRepository.findDistinctByGenre();
     }
 
     public List<MovieDTO> getMovies(String movieGenre, String searchString) {
