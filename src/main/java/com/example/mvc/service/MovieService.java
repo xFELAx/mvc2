@@ -1,21 +1,32 @@
 package com.example.mvc.service;
 
 import com.example.mvc.model.dto.MovieDTO;
+import com.example.mvc.model.entity.DictGenre;
 import com.example.mvc.model.entity.Movie;
 import com.example.mvc.model.mapper.MovieMapper;
+import com.example.mvc.repository.GenreRepository;
 import com.example.mvc.repository.MovieRepository;
 import jakarta.transaction.Transactional;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 @Service
 @AllArgsConstructor
 public class MovieService {
     private final MovieRepository movieRepository;
+    private final GenreRepository genreRepository;
     public List<String> getGenres() {
-        return  movieRepository.findDistinctByGenre();
+        Iterator<DictGenre> it = genreRepository.findAll().iterator();
+        List<String> list = new ArrayList<>();
+        while (it.hasNext()) {
+            DictGenre next = it.next();
+            list.add(next.getGenre());
+        }
+        return list;
     }
 
     public List<MovieDTO> getMovies(String movieGenre, String searchString) {

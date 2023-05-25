@@ -66,7 +66,7 @@ public class MvcMovieConfig implements WebMvcConfigurer {
 
     @Override
     public void configureDefaultServletHandling(DefaultServletHandlerConfigurer configurer) {
-        configurer.enable();
+        configurer.enable("myCustomDefaultServlet");
     }
 
     @Override

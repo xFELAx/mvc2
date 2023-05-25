@@ -10,7 +10,6 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface MovieRepository extends JpaRepository<Movie, Integer> {
 
-    List<String> findDistinctByGenre();
 
     List<Movie> findByTitleContaining(String searchString);
 

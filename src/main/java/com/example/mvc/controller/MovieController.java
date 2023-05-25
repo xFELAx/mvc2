@@ -2,8 +2,11 @@ package com.example.mvc.controller;
 
 import com.example.mvc.model.dto.MovieDTO;
 import com.example.mvc.service.MovieService;
+import jakarta.servlet.RequestDispatcher;
+import jakarta.servlet.http.HttpServletRequest;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -80,5 +83,17 @@ public class MovieController {
     public ModelAndView deleteConfirmed(@PathVariable int id) {
         service.deleteMovie(id);
         return new ModelAndView("redirect:/");
+    }
+
+    @GetMapping("/error")
+    public String showErrorPage(Model model, HttpServletRequest request) {
+        String requestId = (String) request.getAttribute(RequestDispatcher.ERROR_REQUEST_URI);
+        if (requestId != null) {
+            model.addAttribute("requestId", requestId);
+            model.addAttribute("showRequestId", true);
+        } else {
+            model.addAttribute("showRequestId", false);
+        }
+        return "error";
     }
 }
